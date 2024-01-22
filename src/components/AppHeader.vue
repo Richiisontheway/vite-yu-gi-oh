@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss"  >
 .container-img{
-    height: 80px;
+    height: 10vh;
     img{
         height: 100%;
     }
