@@ -11,7 +11,9 @@ export default {
         singolCard
     },
     methods: {
-
+        ActiveXObject(xy){
+            this.store.searchArchetype = xy
+        }
     },
 }
 </script>
@@ -20,8 +22,18 @@ export default {
     <main class="bg-warning">
         <div class="container">
             <form class="py-4">
-                <select>
-                <option selected>Alien</option>
+                <select v-model="store.searchArchetype"
+                @click="$emit('searched')">
+
+                    <option @click="ActiveXObject(value)"
+                    :value="type.archetype_name" v-for="(type, a) 
+                    in store.archetype"
+                    :key="a">
+                    
+                    {{ type.archetype_name }}
+                
+                    </option>
+
                 </select>
             </form>
             <div class="bg-light-subtle p-4">
