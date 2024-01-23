@@ -16,32 +16,37 @@ export default {
         AppFooter,
     },  
     methods: {
-        createdCard(){
+        searchCardsByArchetype(){
             axios.get(this.store.yugiohUrl, {
-            params: {
-                archetype: this.store.searchArchetype
-            }
+                params: {
+                    archetype: this.store.searchArchetype
+                }
             })
             .then((response)=>{
                 console.log(response.data.data);
-                this.store.yugiohCard = response.data.data
+                this.store.yugiohCards = response.data.data
             })
         },
-        archetype(){
-            axios.get(this.store.archetypeUrl,)
-
+        
+        getAllCards(){
+            axios.get(this.store.yugiohUrl)
             .then((response)=>{
-
+                console.log(response.data.data);
+                this.store.yugiohCards = response.data.data
+            })
+        },
+        
+        getAllArchetypes(){
+            axios.get(this.store.archetypeUrl)
+            .then((response)=>{
             console.log(response.data);
-
             this.store.archetype = response.data;
         })
-        }
+        },
     },
     created(){
-        this.createdCard();
-        this.archetype();
-        
+        this.getAllCards();
+        this.getAllArchetypes();
     }
 }
 </script>
@@ -50,7 +55,7 @@ export default {
 
     <AppHeader />
 
-    <AppMain :store.yugiohCard ="elem"  @searched="createdCard()"/>
+    <AppMain :store.yugiohCard ="elem"  @searched="searchCardsByArchetype()"/>
 
     <AppFooter />
 </template>
