@@ -7,7 +7,7 @@ export default {
             store,
         };
     },
-    components : {
+    components: {
         singolCard
     },
     methods: {
@@ -26,11 +26,12 @@ export default {
                 @click="$emit('searched')">
 
                     <option @click="ActiveXObject(value)"
-                    :value="type.archetype_name" v-for="(type, a) 
+                    :value="type.archetype_name" 
+                    v-for="(type, a) 
                     in store.archetype"
                     :key="a">
                     
-                    {{ type.archetype_name }}
+                        {{ type.archetype_name }}
                 
                     </option>
 
@@ -38,10 +39,10 @@ export default {
             </form>
             <div class="bg-light-subtle p-4">
                 <section class="bg-dark text-light p-2 fw-bold container">
-                    Founded n° card
+                    Founded n°{{ store.yugiohCard.length }} card
                 </section>
                 <section class="container">
-                    <div class="row">
+                    <div class="row justify-content-center ">
                         <singolCard 
                         v-for="(elem, i) in store.yugiohCard" 
                         :key="i"

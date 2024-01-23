@@ -38,7 +38,7 @@ export default {
         })
         }
     },
-    mounted(){
+    created(){
         this.createdCard();
         this.archetype();
         
