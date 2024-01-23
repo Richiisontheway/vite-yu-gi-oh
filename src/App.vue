@@ -7,7 +7,6 @@ import { store } from '../src/store'
 export default {
     data() {
         return {
-            yugiohUrl: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0',
             store,
         };
     },
@@ -20,10 +19,15 @@ export default {
 
     },
     mounted(){
-        axios.get(this.yugiohUrl)
+        axios.get(store.yugiohUrl)
         .then((response)=>{
             console.log(response.data.data);
             this.store.yugiohCard = response.data.data
+        })
+        axios.get(store.archetypeUrl)
+        .then((response)=>{
+            console.log(response.data);
+            this.store.archetypeUrl = response.data
         })
     }
 }
